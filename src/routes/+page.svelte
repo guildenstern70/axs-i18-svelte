@@ -1,2 +1,18 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import { _, locale } from 'svelte-i18n';
+	import { get } from 'svelte/store';
+
+	const changeLanguage = () => {
+		const currentLocale = get(locale);
+		if (currentLocale === 'en') {
+			locale.set('it');
+		} else {
+			locale.set('en');
+		}
+	}
+
+</script>
+
+<h1>{$_('brevetti')}</h1>
+
+<button on:click={changeLanguage}>{$_('cambia_lingua')}</button>
